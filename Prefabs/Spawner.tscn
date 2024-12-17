@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://chexnmkn87kjh"]
+
+[ext_resource type="Script" path="res://Scripts/Spawner.cs" id="1_5gbm0"]
+[ext_resource type="Texture2D" uid="uid://dju3mnotjieim" path="res://Sprites/Spawner.png" id="1_tqjhh"]
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource("1_5gbm0")
+downTime = 3.0
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("1_tqjhh")
