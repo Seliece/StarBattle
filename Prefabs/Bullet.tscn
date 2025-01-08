@@ -3,18 +3,19 @@
 [ext_resource type="Script" path="res://Scripts/Bullet.cs" id="1_yyhoi"]
 [ext_resource type="Texture2D" uid="uid://cvkugf0lykido" path="res://Sprites/laserRed01.png" id="2_wy4x2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5gix"]
-size = Vector2(10, 34)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s2yyq"]
+size = Vector2(8, 24)
 
-[node name="Bullet" type="Area2D"]
+[node name="Area2D" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_yyhoi")
-speed = 2000.0
+speed = 1200.0
 
 [node name="Laser" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -26)
 texture = ExtResource("2_wy4x2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -33)
-shape = SubResource("RectangleShape2D_p5gix")
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_s2yyq")

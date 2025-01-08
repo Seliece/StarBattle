@@ -1,12 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3ssmx5ijxgic"]
+[gd_scene load_steps=5 format=3 uid="uid://b3ssmx5ijxgic"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.cs" id="1_ikwsl"]
+[ext_resource type="Material" uid="uid://disyldsb3v38i" path="res://Materials/Hurt.tres" id="2_2k83m"]
 [ext_resource type="Texture2D" uid="uid://dv1romsv2hbbl" path="res://Sprites/icon.svg" id="2_lldr0"]
 
-[node name="Enemy" type="Node2D"]
-position = Vector2(-18, 0)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vok0"]
+size = Vector2(128, 128)
+
+[node name="Enemy" type="Node2D" groups=["Enemy"]]
 script = ExtResource("1_ikwsl")
 speed = 200.0
 
 [node name="Icon" type="Sprite2D" parent="."]
+material = ExtResource("2_2k83m")
 texture = ExtResource("2_lldr0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_1vok0")

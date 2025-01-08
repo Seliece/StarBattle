@@ -1,15 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cphboqywmvm4f"]
+[gd_scene load_steps=6 format=3 uid="uid://cphboqywmvm4f"]
 
 [ext_resource type="Script" path="res://Scripts/Core.cs" id="1_xt3ty"]
 [ext_resource type="Texture2D" uid="uid://dv1romsv2hbbl" path="res://Sprites/icon.svg" id="2_gh5vg"]
 [ext_resource type="PackedScene" uid="uid://chexnmkn87kjh" path="res://Prefabs/Spawner.tscn" id="3_8plop"]
+[ext_resource type="Script" path="res://Scripts/Zoom.cs" id="3_vsowh"]
 [ext_resource type="PackedScene" uid="uid://b3ssmx5ijxgic" path="res://Prefabs/Enemy.tscn" id="4_kwrsy"]
 
 [node name="Game" type="Node2D"]
 
 [node name="Player" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-4, -2)
 script = ExtResource("1_xt3ty")
 rotateSpeed = 280.0
 speed = 1000.0
@@ -19,10 +19,9 @@ reloadTime = 0.1
 texture = ExtResource("2_gh5vg")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(288, 160)
-texture = ExtResource("2_gh5vg")
+zoom = Vector2(0.5, 0.5)
+script = ExtResource("3_vsowh")
+zoomChange = 1.1
 
 [node name="Icon2" type="Sprite2D" parent="."]
 position = Vector2(328, -56)
@@ -33,3 +32,25 @@ position = Vector2(-328, 168)
 mob = ExtResource("4_kwrsy")
 aiToFollow = NodePath("../Player")
 speed = 200.0
+mobLimit = 1
+maxDistance = 500.0
+startHP = 100.0
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = -144.0
+offset_top = -288.0
+offset_right = -47.0
+offset_bottom = -265.0
+scale = Vector2(3, 3)
+text = "Score: 00000"
+horizontal_alignment = 1
+vertical_alignment = 1

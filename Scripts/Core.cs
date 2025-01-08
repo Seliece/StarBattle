@@ -36,18 +36,17 @@ public partial class Core : Node2D
 		}
 
 		if (Input.IsKeyPressed(Key.S)) {
-			float Xpos = Position.X - (float)(speed * delta * Math.Sin((double)Rotation)); 
+			float Xpos = Position.X - (float)(speed * delta * Math.Sin((double)Rotation	)); 
 			float Ypos = Position.Y + (float)(speed * delta *  Math.Cos((double)Rotation));
 			Position = new Vector2(Xpos, Ypos);
 		}
 		
-		if (Input.IsKeyPressed(Key.Space) && (bulletTimer.TimeLeft == 0)) {
-			GD.Print("pew");
+		if (Input.IsKeyPressed(Key.Space) && (bulletTimer.TimeLeft == 0)) {	
 			Shoot();
 		}
 	}
 	void Shoot() {
-		Area2D instance = bullet.Instantiate<Area2D>();
+		Bullet instance = bullet.Instantiate<Bullet>();
 		instance.Position = Position;
 		instance.Rotation = Rotation;
 		GetParent().AddChild(instance);
